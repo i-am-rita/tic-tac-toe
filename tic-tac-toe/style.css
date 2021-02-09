@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+  /* margin: 0; */
+}
+body {
+  margin: 0;
+}
+
+.board {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  /* align-items: center; */
+  align-content: center;
+}
+
+.board.x .cell:hover::before {
+}
+.cell {
+  /* background-color: black; */
+  width: 100px;
+  height: 100px;
+  border: 1px solid #000000;
+  position: relative;
+  cursor: pointer;
+}
+
+/* cursor effect when hovered upon */
+.cell.x,
+.cell.circle {
+  cursor: not-allowed;
+}
+
+/* Removing the borders outside the cells */
+
+/* Top and Bottom borders*/
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:nth-child(8),
+.cell:nth-child(7),
+.cell:last-child {
+  border-bottom: none;
+}
+
+/* Left and right borders */
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7) {
+  border-left: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+  border-right: none;
+}
+
+.cell.x:before,
+.cell.x:after {
+  background-color: black;
+}
+
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after {
+  background-color: lightgray;
+}
+
+/* "not-applicator" - the faint X should be made visible if theres isn't X or O in the cell */
+.cell.x:before,
+.cell.x:after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after {
+  content: '';
+  top: 45px;
+  width: 100px;
+  height: 5px;
+  position: absolute;
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before {
+  transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after {
+  transform: rotate(-45deg);
+}
+
+.board.circle .cell:not(.x):not(.circle):hover::before {
+}
+/* Making letter O */
+.cell.circle:before,
+.cell.circle:after,
+.board.circle .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+  content: '';
+  border-radius: 50px;
+  position: absolute;
+}
+
+.cell.circle::before,
+.cell.circle::after {
+  background-color: black;
+}
+.board.circle .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+  background-color: lightgray;
+}
+
+.cell.circle::before,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+  width: 100px;
+  height: 100px;
+  /* background-color: black; */
+  /* border: 1px solid; */
+}
+
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+  width: 100px;
+  height: 100px;
+  /* background-color: #000000; */
+}
+
+.winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+}
+
+.winning-message button {
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid#ffffff;
+  font-size: 2.5rem;
+  border-radius: 3px;
+}
+
+.winning-message button:hover {
+  background-color: #000000;
+  color: #ffffff;
+  border: 3px solid#000000;
+}
+
+.winning-message.show {
+  display: flex;
+}
