@@ -17,7 +17,18 @@ const restartButton = document.getElementById('restartButton')
 const winningMessageTextElement = document.querySelector(
   '[data-winning-message-text]'
 )
+const button = document.querySelector(['close-btn'])
 
+const X = prompt('Enter first player"s name)
+const O = prompt('Enter second player"s name)
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector(['close-btn']).addEventListener('click', handleClickA)
+  )}
+
+function handleClickA(e) {
+  overlay.prompt("Let's play tic-tac-toe", "default answer")
+}
 // creating a variable which determines whose turn it is.... If its circle's turn, it'll return True and vice-versa
 let circleTurn
 
