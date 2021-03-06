@@ -19,8 +19,8 @@ const winningMessageTextElement = document.querySelector(
 )
 const button = document.querySelector(['close-btn'])
 
-const X = prompt('Enter first player"s name)
-const O = prompt('Enter second player"s name)
+const X = prompt('Enter first player"s name')
+const O = prompt('Enter second player"s name')
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector(['close-btn']).addEventListener('click', handleClickA)
